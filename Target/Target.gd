@@ -17,5 +17,6 @@ func _physics_process(_delta):
 		speed = abs(speed)		
 
 
+
 func die():
 	queue_free()

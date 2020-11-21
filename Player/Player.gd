@@ -9,8 +9,10 @@ var mouse_range = 1.2
 
 var velocity = Vector3()
 
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
@@ -24,3 +26,12 @@ func _physics_process(_delta):
 			var target = $Pivot/RayCast.get_collider()
 			if target.is_in_group("target"):
 				target.die()
+
+func animation():
+	if Input.is_action_just_pressed("shoot"):
+		if $Pivot/RayCast.is_colliding():
+			var target = $Pivot/RayCast.get_collider()
+			if target.is_in_group("target"):
+				$Explosions.play("default")
+
+
